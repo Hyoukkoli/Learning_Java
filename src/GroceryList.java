@@ -10,33 +10,35 @@ public class GroceryList {
 
     public static void createList(ArrayList list){
         Scanner in = new Scanner (System.in);
-        int length = 4;
+        //entry for first product, no exit possible as it is the first item on the list (who has a grocery list with no
+        // items on it?)
         System.out.println("Please enter the name of the product.");
         String item = in.nextLine();
         list.add(item);
-        for (int i = 0; i < length; i++){
-            System.out.println("Please enter the name of the product.");
+        while (item.equalsIgnoreCase("exit") != true){
+            System.out.println("Please enter the name of the product. If you do not want to add another item, type " +
+                    "in 'exit'.");
+            //possibility for exit entry as the grocery list could only contain one item
             item = in.nextLine();
             checkItem(item, list);
         }
+        int length = list.size() - 1;
         for (int i = 0; i <= length; i++){
             System.out.println(list.get(i) + "\t");
         }
     }
 
-    //TO-DO: something is not working as planned: product is added even though it is in the ArrayList, later on ERROR
-
-    public static void checkItem(String item, ArrayList list){
-        Scanner in = new Scanner (System.in);
+    public static void checkItem(String item, ArrayList list) {
         int length = list.size();
-        for (int i = 0; i < length; i++){
-            String currentItem = (String)list.get(i);
-            if (item.equalsIgnoreCase(currentItem) == true){
-                System.out.println("This item is already on the list. Please enter the name of another product.");
-                item = in.nextLine();
-                checkItem(item, list);
-                list.add(item);
+        for (int i = 0; i < length; i++) {
+            String currentItem = (String) list.get(i);
+            if (item.equalsIgnoreCase(currentItem) == true) {
+                System.out.println("This item is already on the list.");
+                return;
             }
+        }
+        if (item.equalsIgnoreCase("exit") == false) {
+            list.add(item);
         }
     }
 }
