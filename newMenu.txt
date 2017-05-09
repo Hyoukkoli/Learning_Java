@@ -1,0 +1,12 @@
+Pizza Salami	6,90
+Pizza Tonno	7,20
+Pizza WhatNot	6,66
+Spaghetti Bolognese	8,90
+Spaghetti WhatNot	6,66
+Tortellini WhatNot	6,66
+Coke	1,99
+Sprite	1,99
+Still Water	FREE
+Sparkling Water	0,99
+Lemon Juice	2,99
+Apple Juice	2,99

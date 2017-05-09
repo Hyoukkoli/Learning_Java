@@ -1,0 +1,12 @@
+Pizza Salami
+Pizza Tonno
+Pizza WhatNot
+Spaghetti Bolognese
+Spaghetti WhatNot
+Tortellini WhatNot
+Coke
+Sprite
+Still Water
+Sparkling Water
+Lemon Juice
+Apple Juice
