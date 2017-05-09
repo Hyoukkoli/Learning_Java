@@ -1,3 +1,5 @@
+//This type of search (in an array) only works if the array is already sorted
+
 public class Binary {
 
     public static void main(String[] args){

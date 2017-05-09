@@ -1,3 +1,6 @@
+//This type of sorting mechanism swaps different numbers within the array (in this case: it swaps the places of the
+//highest and lowest value)
+
 public class SelectionSort {
 
 

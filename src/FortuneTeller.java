@@ -7,7 +7,7 @@ public class FortuneTeller {
 
     public static void main(String[] args){
 
-        File inputFile = new File("src/answers.txt");
+        File inputFile = new File("answers.txt");
         ArrayList<String> answers = new ArrayList<String>();
         String answer, response = "y";
         Random rand = new Random();

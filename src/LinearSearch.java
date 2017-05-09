@@ -1,3 +1,6 @@
+//This type of search compares a given value to the entries of the array, starting with the first entry/value and
+//continuing until the last entry has been reached and compared to.
+
 public class LinearSearch {
 
     public static void main (String[] args){
