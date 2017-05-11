@@ -1,6 +1,6 @@
 package GroceryList;
 
-import java.lang.reflect.Array;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -64,6 +64,34 @@ public class GroceryList {
     public static GroceryItems.ProductType checkAmountEnding(String ending) {
         Scanner in = new Scanner(System.in);
         GroceryItems.ProductType type = null;
+        ending = ending.toLowerCase();
+        switch(ending){
+            case "grams":
+                type = GroceryItems.ProductType.GRAMS;
+                return type;
+            case "kilograms":
+                type = GroceryItems.ProductType.KILOGRAMS;
+                return type;
+            case "millilitre":
+                type = GroceryItems.ProductType.MILLILITRE;
+                return type;
+            case "litre":
+                type = GroceryItems.ProductType.LITRE;
+                return type;
+            case "piece":
+                type = GroceryItems.ProductType.PIECE;
+                return type;
+            case "pieces":
+                type = GroceryItems.ProductType.PIECES;
+                return type;
+            default:
+                System.out.println("The type of amount entered is not available. Please re-enter your input (grams, " +
+                        "kilograms, millilitre, litre, piece, pieces).");
+                String newEnding = in.next();
+                return checkAmountEnding(newEnding);
+        }
+
+/*
         if (ending.equalsIgnoreCase("grams")) {
             type = GroceryItems.ProductType.GRAMS;
         } else if (ending.equalsIgnoreCase("kilograms")) {
@@ -83,7 +111,7 @@ public class GroceryList {
             return checkAmountEnding(newEnding);
         }
         return type;
-    }
+*/    }
 
 }
 
