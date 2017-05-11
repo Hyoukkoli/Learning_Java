@@ -28,7 +28,10 @@ public class HeightStudents {
         //code to calculate and return the average height of the students in the list
         double totalHeight = 0;
         for (int i = 0; i < number; i++){
-            totalHeight = totalHeight + studentList[i];
+            //totalHeight = totalHeight + studentList[i];
+
+            //same thing as totalHeight = totalHeight + studentList[i];
+            totalHeight += studentList[i];
         }
         System.out.println("The average height of the students in the list is: " + (totalHeight / number));
 
