@@ -44,6 +44,10 @@ public class GroceryItems{
         return this.sizeOfProduct;
     }
 
+    public ProductType getType() {
+        return this.type;
+    }
+
 
 
 

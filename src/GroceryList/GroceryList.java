@@ -6,18 +6,87 @@ import java.util.Scanner;
 
 public class GroceryList {
 
+    static Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
-        ArrayList<String> groceryList = new ArrayList<>(5);
-        createListNEW(groceryList);
-        //createList(groceryList);
+        ArrayList<GroceryItems> groceryList = new ArrayList<>(5);
+
+
+        String input = getItemInput(in);
+        while (!input.equalsIgnoreCase("exit")) {
+            // Parse input as name
+
+            System.out.println("Please enter the amount and the type of amount of the product (grams, kilograms, millilitre," +
+                    " litre, piece, pieces).");
+
+
+            GroceryItems product = getQuantityAndType(input);
+
+            groceryList.add(product);
+
+            input = getItemInput(in);
+
+
+        }
+
+        printGroceryList(groceryList);
     }
 
+    public static String getItemInput(Scanner in) {
+        System.out.println("Please enter the name of the product.");
+        String input = in.nextLine().trim();
 
+        if (input.length() != 0) {
+            return input;
+        }
+
+        System.out.print("Fuck off. ");
+        return getItemInput(in);
+    }
+
+    public static GroceryItems getQuantityAndType(String productName)
+    {
+        String[] fragments = in.nextLine().trim().split(" ");
+        if (fragments.length != 2) {
+            // @TODO Gib fehler aus!
+            return getQuantityAndType(productName);
+        }
+
+        String numberPart = fragments[0];
+        String typePart = fragments[1];
+
+        // "TODO: parse number, restartz from beginning if error
+
+
+        return new GroceryItems(
+                productName,
+                2, // TODO
+                GroceryItems.ProductType.GRAMS // TODO
+        );
+    }
+
+    public static double getQuantityFromInput(String input) {
+        try {
+            double inputInDouble = Double.parseDouble(input);
+            return inputInDouble;
+        } catch (Exception e) {
+            System.out.print("The amount entered is not a number. Please enter a number.");
+            return getQuantityFromInput(in.next());
+        }
+    }
+
+    public static void printGroceryList(ArrayList<GroceryItems> list) {
+
+        for (int i = 0; i < list.size(); i++) {
+            GroceryItems product = list.get(i);
+            System.out.println(product.getProductName() + " " + product.getSizeOfProduct() + product.getType());
+        }
+    }
 
     //TO-DO: add amount of entered product if it is already in the list
 
-    public static void createListNEW(ArrayList list) {
-        Scanner in = new Scanner(System.in);
+    public static void createListNEW(ArrayList list, Scanner in) {
+
 
         System.out.println("Please enter the name of the product.");
         String name = in.nextLine();
@@ -61,11 +130,26 @@ public class GroceryList {
     }
 
 
+    public static void addNewProduct(ArrayList list, Scanner in) {
+        String name;
+
+        System.out.println("Please enter a new Product. If you do not want to add another product, enter 'exit'.");
+        name = in.nextLine();
+        if (name.equalsIgnoreCase("exit")) {
+            return;
+        }
+        System.out.print("Please enter the amount and the type of amount of the product (grams, kilograms, " +
+                "millilitre, litre, piece, pieces).");
+
+
+        //bei Fehlereingabe: Ausgeben, was falsch war, User aufforden, nochmal Eingabe zu machen (richtige Eingabe!)
+
+    }
+
     public static GroceryItems.ProductType checkAmountEnding(String ending) {
-        Scanner in = new Scanner(System.in);
         GroceryItems.ProductType type = null;
-        ending = ending.toLowerCase();
-        switch(ending){
+        ending = ending.trim().toLowerCase();
+        switch (ending) {
             case "grams":
                 type = GroceryItems.ProductType.GRAMS;
                 return type;
@@ -90,6 +174,8 @@ public class GroceryList {
                 String newEnding = in.next();
                 return checkAmountEnding(newEnding);
         }
+    }
+}
 
 /*
         if (ending.equalsIgnoreCase("grams")) {
@@ -111,11 +197,7 @@ public class GroceryList {
             return checkAmountEnding(newEnding);
         }
         return type;
-*/    }
-
-}
-
-
+*/
 
 
 /*OLD CODE
