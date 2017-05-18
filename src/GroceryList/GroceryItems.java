@@ -44,8 +44,16 @@ public class GroceryItems{
         return this.sizeOfProduct;
     }
 
+    public void setSizeOfProduct(double newAmount){
+        sizeOfProduct = newAmount;
+    }
+
     public ProductType getType() {
         return this.type;
+    }
+
+    public void setType(ProductType type){
+        this.type = type;
     }
 
 

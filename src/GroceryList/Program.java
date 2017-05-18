@@ -8,12 +8,13 @@ public class Program {
 
     ArrayList <GroceryItems> groceryList = new ArrayList<GroceryItems>();
     GroceryItemsInputReader inputReader = new GroceryItemsInputReader();
+    GroceryListChecker checkProduct = new GroceryListChecker();
 
 
     public void run(){
         GroceryItems item = inputReader.readItem();
         while (item != null){
-            this.groceryList.add(item);
+            checkProduct.checkNames(item, groceryList);
             item = inputReader.readItem();
         }
         if (groceryList.size() == 0){

@@ -1,14 +1,15 @@
 package GroceryList;
 
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GroceryItemsInputReader {
+public class GroceryItemsInputReader{
 
     Scanner in = new Scanner (System.in);
 
+
     public GroceryItems readItem() {
+
         System.out.println("Do you wish to add a product to the list? Please enter y or n.");
         String newProductAnswer = in.nextLine().toLowerCase().trim();
         switch (newProductAnswer) {
@@ -21,6 +22,7 @@ public class GroceryItemsInputReader {
             default:
                 System.out.println("Your input cannot be processed.");
                 return readItem();
+
         }
     }
 
@@ -48,12 +50,15 @@ public class GroceryItemsInputReader {
             System.out.println("The input is not correct. Please try again. Error: Only two entries are allowed " +
                     "(amount and type of amount).");
             getQuantityAndType(productName);
+
         }
 
         double quantity = getQuantityFromInput(fragments[0]);
         GroceryItems.ProductType type = checkAmountEnding(fragments[1]);
 
         return createProduct(productName, quantity, type);
+
+
     }
 
 
@@ -100,16 +105,20 @@ public class GroceryItemsInputReader {
     }
 
 
+
+
     public GroceryItems createProduct(String name, double amount, GroceryItems.ProductType type){
         GroceryItems product = new GroceryItems(name, amount, type);
         return product;
     }
 
 
-    public ArrayList addProductToList(GroceryItems product, ArrayList<GroceryItems> list){
+
+
+    /*public ArrayList addProductToList(GroceryItems product, ArrayList<GroceryItems> list){
         list.add(product);
         return list;
-    }
+    }*/
 
 }
 
