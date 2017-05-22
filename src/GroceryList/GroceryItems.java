@@ -13,28 +13,24 @@ public class GroceryItems{
         MILLILITRE,
         LITRE,
         PIECE,
-        PIECES;
+        PIECES,
+        EMPTY,
 
-
-        public static String getEnding(ProductType type){
-            switch(type){
-                case GRAMS: return "g";
-                case KILOGRAMS: return "kg";
-                case MILLILITRE: return "ml";
-                case LITRE: return "l";
-                case PIECE: return "pc";
-                case PIECES: return "pcs";
-            }
-            return null;
-        }
     }
 
+    //constructor for products with only a name (e.g. spices and stuff like that, or if you only want to add a name)
+    public GroceryItems(String name){
+        this.productName = name;
+        sizeOfProduct = 0;
+        type = ProductType.EMPTY;
+    }
 
     public GroceryItems(String name, double size, ProductType type){
         this.productName = name;
         this.sizeOfProduct = size;
         this.type = type;
     }
+
 
     public String getProductName(){
         return this.productName;
@@ -54,6 +50,19 @@ public class GroceryItems{
 
     public void setType(ProductType type){
         this.type = type;
+    }
+
+    public static String getEnding(ProductType type){
+        switch(type){
+            case GRAMS: return "g";
+            case KILOGRAMS: return "kg";
+            case MILLILITRE: return "ml";
+            case LITRE: return "l";
+            case PIECE: return "pc";
+            case PIECES: return "pcs";
+            case EMPTY: return null;
+        }
+        return null;
     }
 
 

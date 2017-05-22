@@ -21,7 +21,7 @@ public class GroceryListChecker {
     }
 
     //Method 2
-    public void checkType(GroceryItems newProduct, GroceryItems oldProduct){
+    private void checkType(GroceryItems newProduct, GroceryItems oldProduct){
         if (newProduct.getType() == oldProduct.getType()){
             addAmountToOldProduct(newProduct, oldProduct);
         } else {
@@ -30,12 +30,12 @@ public class GroceryListChecker {
     }
 
     //Method 3
-    public void addAmountToOldProduct(GroceryItems newProduct, GroceryItems oldProduct){
+    private void addAmountToOldProduct(GroceryItems newProduct, GroceryItems oldProduct){
         oldProduct.setSizeOfProduct(oldProduct.getSizeOfProduct()+newProduct.getSizeOfProduct());
     }
 
     //Method 4
-    public void checkCompatibilityOfTypes(GroceryItems newProduct, GroceryItems oldProduct){
+    private void checkCompatibilityOfTypes(GroceryItems newProduct, GroceryItems oldProduct){
         if ((newProduct.getType() == GroceryItems.ProductType.GRAMS && oldProduct.getType() == GroceryItems.ProductType.KILOGRAMS)
                 || (newProduct.getType() == GroceryItems.ProductType.KILOGRAMS && oldProduct.getType() == GroceryItems.ProductType.GRAMS)
                 || (newProduct.getType() == GroceryItems.ProductType.MILLILITRE && oldProduct.getType() == GroceryItems.ProductType.LITRE)
@@ -48,7 +48,7 @@ public class GroceryListChecker {
     }
 
     //Method 5
-    public void matchAmount(GroceryItems newProduct, GroceryItems oldProduct){
+    private void matchAmount(GroceryItems newProduct, GroceryItems oldProduct){
         if (oldProduct.getType() == GroceryItems.ProductType.KILOGRAMS || oldProduct.getType() == GroceryItems.ProductType.LITRE) {
             oldProduct.setSizeOfProduct(oldProduct.getSizeOfProduct() * 1000);
         } else if (newProduct.getType() == GroceryItems.ProductType.KILOGRAMS || newProduct.getType() == GroceryItems.ProductType.LITRE){
@@ -58,6 +58,7 @@ public class GroceryListChecker {
             return;
         }
         addAmountToOldProduct(newProduct, oldProduct);
+        /*
         System.out.println("The old product and the new product had different types of amount. " +newProduct.getType() +
                 " and " +oldProduct.getType() + ".\r\n");
         System.out.println("Do you want to change the type of the product to the type of the new one (into "
@@ -67,6 +68,6 @@ public class GroceryListChecker {
         if (answer.equalsIgnoreCase("yes")){
             oldProduct.setSizeOfProduct(oldProduct.getSizeOfProduct()/1000);
             oldProduct.setType(newProduct.getType());
-        }
+        } */
     }
 }

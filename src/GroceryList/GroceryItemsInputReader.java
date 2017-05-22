@@ -42,8 +42,12 @@ public class GroceryItemsInputReader{
     public GroceryItems getQuantityAndType(String productName) {
         //Quantity and Type are entered as one string and then split (space between amount and type of amount)
         System.out.println("Please enter the amount and the type of amount of the product (grams, kilograms, millilitre," +
-                " litre, piece, pieces).");
-        String[] fragments = in.nextLine().trim().split(" ");
+                " litre, piece, pieces).\r\n" + "If you only want to add a name without any amount, simply enter two spaces.");
+        String input = in.nextLine();
+        if (input.equals("  ")){
+            return createProductWithName(productName);
+        }
+        String[] fragments = input.trim().split(" ");
 
         //error message if more than two 'things' are entered
         if (fragments.length != 2) {
@@ -55,7 +59,7 @@ public class GroceryItemsInputReader{
 
         double quantity = getQuantityFromInput(fragments[0]);
         GroceryItems.ProductType type = checkAmountEnding(fragments[1]);
-
+        changeAmount(quantity, type);
         return createProduct(productName, quantity, type);
 
 
@@ -65,12 +69,21 @@ public class GroceryItemsInputReader{
 
     public double getQuantityFromInput(String input) {
         try {
+            if (input.equals(" ")){
+                double emptyInput = Double.NaN;
+                return emptyInput;
+            }
             double inputInDouble = Double.parseDouble(input);
+            if (inputInDouble == 0){
+                System.out.println("The amount entered cannot be used. Please enter a number that is larger than 0.");
+                return getQuantityFromInput(in.nextLine());
+            }
             return inputInDouble;
         } catch (Exception e) {
             System.out.print("The amount entered is not a number. Please enter a number.\n\r");
             return getQuantityFromInput(in.nextLine());
         }
+
     }
 
 
@@ -96,6 +109,9 @@ public class GroceryItemsInputReader{
             case "pieces":
                 type = GroceryItems.ProductType.PIECES;
                 return type;
+            case "nothing":
+                type = GroceryItems.ProductType.EMPTY;
+                return type;
             default:
                 System.out.println("The type of amount entered is not available. Please re-enter your input (grams, " +
                         "kilograms, millilitre, litre, piece, pieces).");
@@ -105,20 +121,22 @@ public class GroceryItemsInputReader{
     }
 
 
-
+    public void changeAmount(double amountValue, GroceryItems.ProductType type){
+            if ((type == GroceryItems.ProductType.KILOGRAMS) ||(type == GroceryItems.ProductType.LITRE)){
+                amountValue = amountValue * 1000;
+            }
+    }
 
     public GroceryItems createProduct(String name, double amount, GroceryItems.ProductType type){
         GroceryItems product = new GroceryItems(name, amount, type);
         return product;
     }
 
+    public GroceryItems createProductWithName (String name){
+        GroceryItems product = new GroceryItems(name);
+        return product;
+    }
 
-
-
-    /*public ArrayList addProductToList(GroceryItems product, ArrayList<GroceryItems> list){
-        list.add(product);
-        return list;
-    }*/
 
 }
 
