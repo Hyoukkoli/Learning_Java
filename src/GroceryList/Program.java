@@ -9,6 +9,7 @@ public class Program {
     ArrayList<GroceryItems> groceryList = new ArrayList<GroceryItems>();
     GroceryItemsInputReader inputReader = new GroceryItemsInputReader();
     GroceryListChecker checkProduct = new GroceryListChecker();
+    GroceryListPrintout printList = new GroceryListPrintout();
 
 
     public void run() {
@@ -23,7 +24,7 @@ public class Program {
         }
         System.out.println("Your grocery list contains " + groceryList.size() + " items.");
         adjustProductValues(groceryList);
-        printGroceryList(groceryList);
+        printList.PrintGroceryList(groceryList);
     }
 
 
@@ -45,15 +46,5 @@ public class Program {
     }
 
 
-    public void printGroceryList(ArrayList<GroceryItems> list) {
 
-        for (int i = 0; i < list.size(); i++) {
-            GroceryItems product = list.get(i);
-            if ((product.getSizeOfProduct() == 0) && (product.getType() == GroceryItems.ProductType.EMPTY)) {
-                System.out.println(product.getProductName());
-            } else {
-                System.out.format("%s %s %-10s %n", product.getSizeOfProduct(), product.getEnding(product.getType()), product.getProductName());
-            }
-        }
-    }
 }

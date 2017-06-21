@@ -1,13 +1,10 @@
 package GroceryList;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GroceryListChecker {
 
-    Scanner in = new Scanner(System.in);
 
-    //Method 1
     public ArrayList<GroceryItems> checkNames(GroceryItems newProduct, ArrayList<GroceryItems> list){
         String nameOfCurrentProduct = newProduct.getProductName();
         for (int i = 0; i < list.size(); i ++){
@@ -20,7 +17,6 @@ public class GroceryListChecker {
         return list;
     }
 
-    //Method 2
     private void checkType(GroceryItems newProduct, GroceryItems oldProduct){
         if (newProduct.getType() == oldProduct.getType()){
             addAmountToOldProduct(newProduct, oldProduct);
@@ -29,12 +25,10 @@ public class GroceryListChecker {
         }
     }
 
-    //Method 3
     private void addAmountToOldProduct(GroceryItems newProduct, GroceryItems oldProduct){
         oldProduct.setSizeOfProduct(oldProduct.getSizeOfProduct()+newProduct.getSizeOfProduct());
     }
 
-    //Method 4
     private void checkCompatibilityOfTypes(GroceryItems newProduct, GroceryItems oldProduct){
         if ((newProduct.getType() == GroceryItems.ProductType.GRAMS && oldProduct.getType() == GroceryItems.ProductType.KILOGRAMS)
                 || (newProduct.getType() == GroceryItems.ProductType.KILOGRAMS && oldProduct.getType() == GroceryItems.ProductType.GRAMS)
@@ -47,7 +41,6 @@ public class GroceryListChecker {
         }
     }
 
-    //Method 5
     private void matchAmount(GroceryItems newProduct, GroceryItems oldProduct){
         if (oldProduct.getType() == GroceryItems.ProductType.KILOGRAMS || oldProduct.getType() == GroceryItems.ProductType.LITRE) {
             oldProduct.setSizeOfProduct(oldProduct.getSizeOfProduct() * 1000);
@@ -58,16 +51,6 @@ public class GroceryListChecker {
             return;
         }
         addAmountToOldProduct(newProduct, oldProduct);
-        /*
-        System.out.println("The old product and the new product had different types of amount. " +newProduct.getType() +
-                " and " +oldProduct.getType() + ".\r\n");
-        System.out.println("Do you want to change the type of the product to the type of the new one (into "
-                + newProduct.getType() + ") or let it stay like it is (" + oldProduct.getType() + ")?\r\n " +
-                "Please enter 'yes' for a change and 'no' for no change.");
-        String answer = in.nextLine().trim().toLowerCase();
-        if (answer.equalsIgnoreCase("yes")){
-            oldProduct.setSizeOfProduct(oldProduct.getSizeOfProduct()/1000);
-            oldProduct.setType(newProduct.getType());
-        } */
     }
+
 }

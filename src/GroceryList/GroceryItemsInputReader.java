@@ -7,7 +7,6 @@ public class GroceryItemsInputReader{
 
     Scanner in = new Scanner (System.in);
 
-
     public GroceryItems readItem() {
 
         System.out.println("Do you wish to add a product to the list? Please enter y or n.");
@@ -37,7 +36,6 @@ public class GroceryItemsInputReader{
             System.out.print("The input seems to be empty.");
             return getItemInput();
         }
-
 
     public GroceryItems getQuantityAndType(String productName) {
         //Quantity and Type are entered as one string and then split (space between amount and type of amount)

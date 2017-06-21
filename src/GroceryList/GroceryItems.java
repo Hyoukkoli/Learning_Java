@@ -52,7 +52,7 @@ public class GroceryItems{
         this.type = type;
     }
 
-    public static String getEnding(ProductType type){
+    public String getEnding(ProductType type){
         switch(type){
             case GRAMS: return "g";
             case KILOGRAMS: return "kg";
@@ -60,10 +60,13 @@ public class GroceryItems{
             case LITRE: return "l";
             case PIECE: return "pc";
             case PIECES: return "pcs";
-            case EMPTY: return null;
+            case EMPTY: return "";
         }
         return null;
     }
+
+
+
 
 
 }
